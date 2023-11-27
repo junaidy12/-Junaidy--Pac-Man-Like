@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
     Rigidbody rb;
     Vector3 movDir;
     Camera cam;
-
+    float horizontal;
+    float vertical;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -21,12 +22,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
 
         movDir = cam.transform.forward * vertical + cam.transform.right * horizontal;
         movDir.y = 0;
-        movDir.Normalize();
     }
 
     void FixedUpdate()
