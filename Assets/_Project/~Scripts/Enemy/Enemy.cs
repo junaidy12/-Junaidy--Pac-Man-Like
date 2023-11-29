@@ -7,9 +7,11 @@ public class Enemy : MonoBehaviour
 {
     public Player player;
     [field: SerializeField] public float chasingDistance { get; private set; } = 5f;
+    [SerializeField] float baseSpeed = 2.25f;
+    [SerializeField][Range(0.1f,1f)] float retreatSpeedMultiplier = .5f;
 
     [HideInInspector]
-    public NavMeshAgent NavMeshAgent;
+    public NavMeshAgent Agent;
 
     BaseState currentState;
     public PatrolState PatrolState = new PatrolState();
@@ -22,13 +24,23 @@ public class Enemy : MonoBehaviour
     {
         currentState = PatrolState;
         currentState.Enter(this);
-        NavMeshAgent = GetComponent<NavMeshAgent>();
+        Agent = GetComponent<NavMeshAgent>();
     }
 
     private void Start()
     {
-        player.OnPowerStarted += () => SwitchState(RetreatState);        
-        player.OnPowerStoped += () => SwitchState(PatrolState);        
+        Agent.speed = baseSpeed;
+        player.OnPowerStarted += () => 
+        {
+            SwitchState(RetreatState);
+            Agent.speed *= retreatSpeedMultiplier;
+        };
+
+        player.OnPowerStoped += () =>
+        {
+            Agent.speed = baseSpeed;
+            SwitchState(PatrolState);
+        };
     }
 
     private void Update()

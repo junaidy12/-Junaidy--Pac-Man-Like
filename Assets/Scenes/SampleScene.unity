@@ -2008,7 +2008,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123119729}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17346148, y: 0.000000016945544, z: -0.000000002984644, w: 0.9848407}
+  m_LocalRotation: {x: 0.17346148, y: 0.000000016626872, z: -0.000000002928516, w: 0.9848407}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3539,7 +3539,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.20159717, y: 0.000000023005484, z: -0.0000000047350577, w: 0.9794685}
+  m_LocalRotation: {x: 0.20159717, y: 0.000000023959075, z: -0.000000004931329, w: 0.9794685}
   m_LocalPosition: {x: -3.19, y: 3.35, z: -3.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15927,7 +15927,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 930049542}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22975297, y: 0.000000004959922, z: -0.0000000011708788, w: 0.973249}
+  m_LocalRotation: {x: 0.22975291, y: 2.6779633e-15, z: -9.271177e-16, w: 0.973249}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -21346,7 +21346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1306713552}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.20159715, y: 0.000000023005484, z: -0.0000000047350577, w: 0.9794685}
+  m_LocalRotation: {x: 0.20159715, y: 0.000000023959075, z: -0.000000004931329, w: 0.9794685}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -22639,7 +22639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a899d1fd02163047804bd7d021ca44f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 180
+  speed: 165
   powerUpDuration: 5
 --- !u!136 &1386249041
 CapsuleCollider:
@@ -28879,7 +28879,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1.5
+  m_Speed: 2.25
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -28974,7 +28974,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1386249040}
   <chasingDistance>k__BackingField: 10
-  NavMeshAgent: {fileID: 0}
+  baseSpeed: 2.25
+  retreatSpeedMultiplier: 0.5
+  Agent: {fileID: 0}
   Waypoints:
   - {fileID: 699761723}
   - {fileID: 891361394}

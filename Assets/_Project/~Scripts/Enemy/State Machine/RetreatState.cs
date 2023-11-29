@@ -15,7 +15,7 @@ public class RetreatState : BaseState
         if(enemy.player != null)
         {
             //move the enemy away from player
-            enemy.NavMeshAgent.destination = enemy.transform.position - enemy.player.transform.position;
+            enemy.Agent.destination = enemy.transform.position - enemy.player.transform.position;
         }
     }
 

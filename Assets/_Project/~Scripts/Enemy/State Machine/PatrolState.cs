@@ -32,13 +32,13 @@ public class PatrolState : BaseState
             destinationPos = enemy.Waypoints[wpIndex].position;
             destinationPos.y = 0;
             //Apply to enemy NavMesh
-            enemy.NavMeshAgent.destination = destinationPos;
+            enemy.Agent.destination = destinationPos;
             isMoving = true;
         }
         else
         {
             //Check if enemy distance less than or equal than the stopping distance threshold
-            if(Vector3.Distance(enemy.NavMeshAgent.destination, enemy.transform.position) <= enemy.NavMeshAgent.stoppingDistance)
+            if(Vector3.Distance(enemy.Agent.destination, enemy.transform.position) <= enemy.Agent.stoppingDistance)
             {
                 isMoving = false;
             }
