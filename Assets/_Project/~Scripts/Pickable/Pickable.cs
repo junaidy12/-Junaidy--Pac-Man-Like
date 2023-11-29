@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Pickable : MonoBehaviour
 {
-    enum PickableType { Coin,PowerUp }
-    [SerializeField] PickableType type;
+    [field: SerializeField] public PickableType PickableType { get; private set; }
 
     public Action<Pickable> OnPicked;
 
@@ -14,9 +13,14 @@ public class Pickable : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log(type + ", Triggered");
+            Debug.Log(PickableType + ", Triggered");
             OnPicked?.Invoke(this);
             Destroy(gameObject);
         }
     }
+}
+public enum PickableType 
+{ 
+    Coin,
+    PowerUp 
 }
