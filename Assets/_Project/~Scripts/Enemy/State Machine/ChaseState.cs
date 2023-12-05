@@ -3,6 +3,7 @@ public class ChaseState : BaseState
 {
     public void Enter(Enemy enemy)
     {
+        enemy.Animator.SetTrigger("Chase");
     }
 
     public void FixedUpdate(Enemy enemy)

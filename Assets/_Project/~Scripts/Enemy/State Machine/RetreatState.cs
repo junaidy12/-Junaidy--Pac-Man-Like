@@ -4,6 +4,7 @@ public class RetreatState : BaseState
 {
     public void Enter(Enemy enemy)
     {
+        enemy.Animator.SetTrigger("Retreat");
     }
 
     public void FixedUpdate(Enemy enemy)

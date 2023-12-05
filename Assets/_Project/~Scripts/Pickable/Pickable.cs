@@ -7,7 +7,7 @@ public class Pickable : MonoBehaviour
 {
     [field: SerializeField] public PickableType PickableType { get; private set; }
 
-    public Action<Pickable> OnPicked;
+    public event Action<Pickable> OnPicked;
 
     private void OnTriggerEnter(Collider other)
     {

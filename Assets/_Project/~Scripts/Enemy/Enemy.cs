@@ -10,8 +10,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float baseSpeed = 2.25f;
     [SerializeField][Range(0.1f,1f)] float retreatSpeedMultiplier = .5f;
 
-    [HideInInspector]
-    public NavMeshAgent Agent;
+    [HideInInspector] public NavMeshAgent Agent;
+    [HideInInspector] public Animator Animator;
 
     BaseState currentState;
     public PatrolState PatrolState = new PatrolState();
@@ -20,28 +20,41 @@ public class Enemy : MonoBehaviour
 
     public List<Transform> Waypoints = new List<Transform>();
 
+
     private void Awake()
     {
+        Agent = GetComponent<NavMeshAgent>();
+        Animator = GetComponentInChildren<Animator>();
         currentState = PatrolState;
         currentState.Enter(this);
-        Agent = GetComponent<NavMeshAgent>();
     }
 
     private void Start()
     {
         Agent.speed = baseSpeed;
-        player.OnPowerStarted += () => 
-        {
-            SwitchState(RetreatState);
-            Agent.speed *= retreatSpeedMultiplier;
-        };
 
-        player.OnPowerStoped += () =>
-        {
-            Agent.speed = baseSpeed;
-            SwitchState(PatrolState);
-        };
+        player.OnPowerStarted += Player_OnPowerStarted;
+        player.OnPowerStoped += Player_OnPowerStopped;
     }
+
+    private void OnDestroy()
+    {
+        player.OnPowerStarted -= Player_OnPowerStarted;
+        player.OnPowerStoped -= Player_OnPowerStopped;
+    }
+
+    private void Player_OnPowerStopped()
+    {
+        Agent.speed = baseSpeed;
+        SwitchState(PatrolState);
+    }
+
+    private void Player_OnPowerStarted()
+    {
+        SwitchState(RetreatState);
+        Agent.speed *= retreatSpeedMultiplier;
+    }
+
 
     private void Update()
     {
@@ -59,6 +72,16 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (currentState == RetreatState) return;
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Player>().Dead();
+        }
+
+    }
     public void SwitchState(BaseState state)
     {
         //exit the previous state
@@ -71,6 +94,11 @@ public class Enemy : MonoBehaviour
         //enter the currentState
         currentState.Enter(this);
         Debug.Log("Current state : " + currentState.ToString());
+    }
+
+    public void Dead()
+    {
+        Destroy(gameObject);
     }
 }
 
