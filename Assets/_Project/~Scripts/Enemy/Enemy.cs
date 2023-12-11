@@ -45,8 +45,8 @@ public class Enemy : MonoBehaviour
 
     private void Player_OnPowerStopped()
     {
-        Agent.speed = baseSpeed;
         SwitchState(PatrolState);
+        Agent.speed = baseSpeed;
     }
 
     private void Player_OnPowerStarted()
