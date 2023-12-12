@@ -2015,7 +2015,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123119729}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17346148, y: -0.000000016945544, z: 0.000000002984644, w: 0.9848407}
+  m_LocalRotation: {x: 0.17346148, y: 0.000000016945545, z: -0.0000000029846443, w: 0.9848407}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16387,7 +16387,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 930049542}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22975291, y: 0.000000018733758, z: -0.0000000044224406, w: 0.973249}
+  m_LocalRotation: {x: 0.22975291, y: -0.000000018707002, z: 0.000000004416125, w: 0.973249}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -23410,6 +23410,8 @@ MonoBehaviour:
   powerUpSpeedMultiplier: 0.5
   health: 3
   respawnPoint: {fileID: 1189312877}
+  turnValue: 35
+  freelookCamera: {fileID: 876247493}
   healthText: {fileID: 707450889}
 --- !u!136 &1386249041
 CapsuleCollider:

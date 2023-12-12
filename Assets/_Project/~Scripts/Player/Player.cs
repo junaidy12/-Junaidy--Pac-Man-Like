@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ public class Player : MonoBehaviour
     [SerializeField][Range(0,1)] float powerUpSpeedMultiplier = .5f;
     [SerializeField] int health;
     [SerializeField] Transform respawnPoint;
+    [SerializeField] float turnValue;
+    [SerializeField] CinemachineFreeLook freelookCamera;
 
     [SerializeField] TMP_Text healthText;
 
@@ -59,6 +62,9 @@ public class Player : MonoBehaviour
 
         //set MovementDirection variable
         movDir = camVertical + camHorizontal;
+
+        //turn the camera based on where player turning
+        freelookCamera.m_XAxis.Value += horizontal * turnValue * Time.deltaTime;
     }
 
     void FixedUpdate()
