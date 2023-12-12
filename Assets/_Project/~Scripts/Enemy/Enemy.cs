@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
 public class Enemy : MonoBehaviour
 {
     public Player player;
@@ -18,8 +17,7 @@ public class Enemy : MonoBehaviour
     public ChaseState ChaseState = new ChaseState();
     public RetreatState RetreatState = new RetreatState();
 
-    public List<Transform> Waypoints = new List<Transform>();
-
+    public static WaypointManager WaypointManager;
 
     private void Awake()
     {
@@ -27,6 +25,10 @@ public class Enemy : MonoBehaviour
         Animator = GetComponentInChildren<Animator>();
         currentState = PatrolState;
         currentState.Enter(this);
+        if(WaypointManager == null)
+        {
+            WaypointManager = FindObjectOfType<WaypointManager>();
+        }
     }
 
     private void Start()
@@ -98,7 +100,8 @@ public class Enemy : MonoBehaviour
 
     public void Dead()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
+
 
